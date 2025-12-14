@@ -17,11 +17,59 @@ class PrimaryButton extends StatelessWidget {
         shadowColor: ColorConst.grey,
         disabledBackgroundColor: ColorConst.primary.withValues(alpha: 0.5),
         padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-        textStyle: TextsConsts.bodyLight,
+        // textStyle: TextsConsts.bodyLight,
       ),
       child: Text(
         data ?? "Primary Button",
-        style: TextsConsts.bodyLight.copyWith(color: ColorConst.darkGrey),
+        style: TextsConsts.bodyLight.copyWith(
+          color: Theme.of(context).colorScheme.surface,
+        ),
+      ),
+    );
+  }
+}
+
+class PrimaryButtonWithIcon extends StatelessWidget {
+  final String? data;
+  final VoidCallback? onPressed;
+  final IconData? icon;
+  final Color? buttonColor;
+  const PrimaryButtonWithIcon({
+    super.key,
+    this.onPressed,
+    this.data,
+    this.buttonColor,
+    this.icon,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton.icon(
+      icon: Padding(
+        padding: const EdgeInsets.only(right: 4),
+        child: Icon(
+          icon ?? Icons.check,
+          size: 24,
+          color: Theme.of(context).colorScheme.surface,
+        ),
+      ),
+      label: Text(
+        data ?? "Primary Button",
+        style: TextsConsts.bodyLight.copyWith(
+          color: Theme.of(context).colorScheme.surface,
+        ),
+      ),
+      onPressed: onPressed,
+      style: ElevatedButton.styleFrom(
+        alignment: Alignment.center,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+        backgroundColor: buttonColor ?? ColorConst.primary,
+        shadowColor: ColorConst.grey,
+        disabledBackgroundColor: (buttonColor ?? ColorConst.primary).withValues(
+          alpha: 0.5,
+        ),
+        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+        // textStyle: TextsConsts.bodyLight,
       ),
     );
   }
@@ -77,17 +125,27 @@ class TertiaryIconButton extends StatelessWidget {
   final String? data;
   final VoidCallback? onPressed;
   final IconData? icon;
-  const TertiaryIconButton({super.key, this.onPressed, this.data, this.icon});
+  final Color? backgroundColor;
+  final String? tooltip;
+  const TertiaryIconButton({
+    super.key,
+    this.onPressed,
+    this.data,
+    this.icon,
+    this.backgroundColor,
+    this.tooltip,
+  });
 
   @override
   Widget build(BuildContext context) {
     return IconButton(
       icon: Icon(icon ?? Icons.star, color: ColorConst.black),
       onPressed: onPressed,
+      tooltip: tooltip,
       style: IconButton.styleFrom(
         overlayColor: ColorConst.darkGrey,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-        backgroundColor: ColorConst.grey,
+        backgroundColor: backgroundColor ?? ColorConst.grey,
         shadowColor: ColorConst.grey,
         disabledBackgroundColor: ColorConst.grey.withValues(alpha: 0.65),
         padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),

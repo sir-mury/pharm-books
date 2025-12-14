@@ -35,12 +35,14 @@ dependencies:
   get: ^4.7.3
   intl: ^0.20.2
   isar_plus: ^1.1.8
+  isar_plus_flutter_libs: ^1.2.0
   path_provider: ^2.1.5
   recase: ^4.1.0
   shared_preferences: ^2.5.3
 
 dev_dependencies:
   flutter_lints: ^6.0.0
+  build_runner: ^2.10.4
   flutter_test:
     sdk: flutter
 
